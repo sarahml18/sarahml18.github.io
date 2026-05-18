@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ============================================================
+    SARAH LIVINGSTON — PORTFOLIO WEBSITE
+    Homepage: index.html
+    Work page: work.html
+
+    HOW TO EDIT THIS FILE:
+    - Use any text editor (Notepad, TextEdit, VS Code, etc.)
+    - Look for the ALL-CAPS comments like <!-- YOUR NAME --> to
+      find editable sections quickly
+    - Save the file, then push to GitHub to see your changes live
+  ============================================================ -->
+  <title>Sarah Livingston — Brand Strategist</title><!-- PAGE TITLE -->
+  <meta name="description" content="Sarah Livingston is a Vancouver-based brand strategist and copywriter with a background in journalism, aviation, and sports marketing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    /* === COLOUR PALETTE ===
+       Change these variables to retheme the entire site at once.
+       Current palette: warm sage + forest green + cream
+    */
+    :root {
+      --cream:       #F5F7F2;
+      --cream-dark:  #E8EDE2;
+      --border:      #C5CEBC;
+      --green-light: #EAF3DE;
+      --green-mid:   #7A9C7B;
+      --green-deep:  #3B6D11;
+      --forest:      #1E2A1F;
+      --text-primary:#1E2A1F;
+      --text-muted:  #4A5C4B;
+      --text-faint:  #7A9C7B;
+      --white:       #FFFFFF;
+      --tag-bg:      #EAF3DE;
+      --tag-text:    #27500A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    /* === NAV === */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* === HERO === */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+    }
+
+    .hero-text {
+      padding: 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 44px;
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--green-deep);
+    }
+
+    .hero-body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+
+    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+    .btn-primary {
+      background: var(--forest);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 13px 26px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 13px 26px;
+      border-radius: 4px;
+      border: 0.5px solid var(--green-mid);
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { background: var(--cream-dark); }
+
+    /* === HERO IMAGE === */
+    /* Replace the background-color with background-image: url('your-photo.jpg')
+       and set background-size: cover; background-position: center top; */
+    .hero-image {
+      background-color: var(--cream-dark);
+      background-image: url('sarah-hero.jpg'); /* ADD YOUR PHOTO FILE HERE */
+      background-size: cover;
+      background-position: center top;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 520px;
+    }
+
+    .hero-image-placeholder {
+      font-size: 12px;
+      color: var(--green-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      /* Hide this once you've added your photo */
+    }
+
+    /* === DIVIDER === */
+    .divider { height: 0.5px; background: var(--border); margin: 0 60px; }
+
+    /* === SECTIONS === */
+    section { padding: 80px 60px; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+
+    /* === VALUES === */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 28px;
+    }
+
+    .value-num {
+      font-family: 'Lora', serif;
+      font-size: 36px;
+      color: var(--border);
+      font-weight: 400;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .value-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .value-body {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* === FEATURED WORK === */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+
+    .work-card:hover { border-color: var(--green-mid); }
+
+    .work-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      align-self: flex-start;
+    }
+
+    .work-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .work-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .work-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green-deep);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .work-card:hover .work-link { gap: 10px; }
+
+    .work-link::after { content: '→'; }
+
+    .work-see-all {
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    /* === ABOUT === */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Replace background-color with background-image: url('sarah-about.jpg')
+       and set background-size: cover; background-position: center; */
+    .about-image {
+      background-color: var(--cream-dark);
+      background-image: url('sarah-about.jpg'); /* ADD YOUR SECONDARY PHOTO HERE */
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image-placeholder {
+      font-size: 12px;
+      color: var(--green-mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .about-text h2 {
+      font-family: 'Lora', serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .about-text p em {
+      font-style: italic;
+      color: var(--green-deep);
+      font-family: 'Lora', serif;
+    }
+
+    .about-text .btn-row { margin-top: 28px; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: var(--forest);
+      padding: 72px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .cta-banner p {
+      font-size: 15px;
+      color: var(--green-mid);
+    }
+
+    .cta-links { display: flex; gap: 14px; flex-shrink: 0; }
+
+    .btn-light {
+      background: var(--cream);
+      color: var(--forest);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 13px 26px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn-light:hover { opacity: 0.9; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 13px 26px;
+      border-radius: 4px;
+      border: 0.5px solid #4A5C4B;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--green-mid); }
+
+    /* === FOOTER === */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      border-top: 0.5px solid var(--border);
+      background: var(--cream);
+    }
+
+    .footer-logo {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      color: var(--text-faint);
+    }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-faint);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 48px 28px; }
+      .hero-image { min-height: 320px; }
+      .divider { margin: 0 28px; }
+      section { padding: 56px 28px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .work-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; padding: 48px 28px; }
+      .cta-links { flex-direction: column; width: 100%; }
+      footer { flex-direction: column; gap: 16px; padding: 24px 28px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+    NAVIGATION
+    Edit the links below to match your pages
+  ============================================================ -->
+  <nav>
+    <a href="index.html" class="nav-logo">Sarah Livingston</a><!-- YOUR NAME -->
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/sarahlivingston01/" target="_blank" rel="noopener">LinkedIn</a></li><!-- YOUR LINKEDIN URL -->
+    </ul>
+  </nav>
+
+
+  <!-- ============================================================
+    HERO
+    The main first impression. Edit headline, subheading, and buttons.
+    Add your photo: save a file called "sarah-hero.jpg" in the same
+    folder as this HTML file. Tall portrait crops work best here.
+  ============================================================ -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Brand Strategist &nbsp;·&nbsp; Vancouver, BC</p><!-- YOUR TITLE + CITY -->
+      <h1>Words that make<br>people <em>feel</em> something.</h1><!-- YOUR HERO HEADLINE -->
+      <p class="hero-body">I'm a brand strategist and writer who turns curiosity into copy that connects. Journalism roots. Marketing instincts. Human-first always.</p><!-- YOUR HERO SUBHEADING -->
+      <div class="btn-row">
+        <a href="work.html" class="btn-primary">See my work</a>
+        <a href="sarah-livingston-resume.pdf" class="btn-secondary" target="_blank">Download resume</a><!-- RENAME YOUR RESUME FILE TO MATCH, OR UPDATE THIS PATH -->
+      </div>
+    </div>
+    <div class="hero-image">
+      <span class="hero-image-placeholder">Your photo here</span><!-- REMOVE THIS SPAN ONCE YOU'VE ADDED YOUR PHOTO -->
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ============================================================
+    VALUES
+    Your three core professional values. Edit title and body copy.
+  ============================================================ -->
+  <section>
+    <p class="section-label">What I bring</p><!-- SECTION LABEL -->
+    <div class="values-grid">
+
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <div class="value-title">Curiosity</div><!-- VALUE 1 TITLE -->
+        <div class="value-body">I ask the right questions to uncover what makes people care — and why messages resonate.</div><!-- VALUE 1 BODY -->
+      </div>
+
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <div class="value-title">Empathy</div><!-- VALUE 2 TITLE -->
+        <div class="value-body">I find the human thread in any message so brands feel personal, not performed.</div><!-- VALUE 2 BODY -->
+      </div>
+
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <div class="value-title">Clarity</div><!-- VALUE 3 TITLE -->
+        <div class="value-body">Clarity isn't simple — it's precise, intentional, and accessible. When it's understood, it lands.</div><!-- VALUE 3 BODY -->
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ============================================================
+    SELECTED WRITING
+    Four featured articles linking out to published work.
+    To swap an article: update the href, title, desc, tag, and source.
+  ============================================================ -->
+  <section>
+    <p class="section-label">Selected writing</p>
+    <div class="work-grid">
+
+      <!-- WRITING CARD 1 -->
+      <a href="https://travelradar.aero/canadian-sustainable-aviation-fuels-council-launched/" target="_blank" rel="noopener" class="work-card">
+        <span class="work-tag">Industry News</span>
+        <div class="work-title">Canadian Sustainable Aviation Fuels Council launched</div>
+        <div class="work-desc">Covering the launch of a new national coalition working to accelerate the adoption of sustainable aviation fuels across Canada. Travel Radar, 2022.</div>
+        <span class="work-link">Read article</span>
+      </a>
+
+      <!-- WRITING CARD 2 -->
+      <a href="https://mindrift.ai/blog/inside-ai" target="_blank" rel="noopener" class="work-card">
+        <span class="work-tag">Feature</span>
+        <div class="work-title">Exploring AI from the inside: my journey as an AI editor</div>
+        <div class="work-desc">A candid first-hand account of what it's really like to train language models — and why the human editor's role matters more than you'd think. Mindrift, 2024.</div>
+        <span class="work-link">Read article</span>
+      </a>
+
+      <!-- WRITING CARD 3 -->
+      <a href="https://travelradar.aero/the-best-airports-for-layovers/" target="_blank" rel="noopener" class="work-card">
+        <span class="work-tag">Feature</span>
+        <div class="work-title">8 of the best airports for layovers</div>
+        <div class="work-desc">Making the case that a long layover can be a feature, not a bug — a guide to the airports worth getting stranded in. Travel Radar, 2021.</div>
+        <span class="work-link">Read article</span>
+      </a>
+
+      <!-- WRITING CARD 4 -->
+      <a href="https://soundcloud.com/sarrraaahhhhh/international-students-in-scotland" target="_blank" rel="noopener" class="work-card">
+        <span class="work-tag">Radio</span>
+        <div class="work-title">International students in Scotland — radio package</div>
+        <div class="work-desc">A produced radio feature exploring the experience of international students studying in Scotland. Broadcast journalism, University of the West of Scotland, 2020.</div>
+        <span class="work-link">Listen on SoundCloud</span>
+      </a>
+
+    </div>
+
+    <div class="work-see-all">
+      <a href="writing.html" class="btn-secondary">See all writing</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ============================================================
+    ABOUT
+    Edit the heading, paragraphs, and button links.
+    Add your photo: save a file called "sarah-about.jpg" in the same
+    folder as this HTML file.
+  ============================================================ -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-image">
+        <span class="about-image-placeholder">Your photo here</span><!-- REMOVE ONCE PHOTO IS ADDED -->
+      </div>
+      <div class="about-text">
+        <p class="section-label">A little about me</p>
+        <h2>Nova Scotian by heart,<br>Vancouverite by choice.</h2><!-- YOUR ABOUT HEADING -->
+        <p>I'm a brand strategist, writer, and storyteller who's endlessly curious about how words shape the world. My background spans journalism, brand marketing, customer experience, and AI — which gives me a multi-disciplinary lens I bring to every project.</p><!-- ABOUT PARAGRAPH 1 -->
+        <p>Someone who collects IKEA catalogues like design textbooks. The person who gets homesick hearing a foghorn. Someone who treats <em>grocery stores like museums.</em></p><!-- ABOUT PARAGRAPH 2 -->
+        <div class="btn-row">
+          <a href="writing.html" class="btn-primary">Read my writing</a>
+          <a href="sarah-livingston-resume.pdf" class="btn-secondary" target="_blank">Download resume</a><!-- UPDATE PATH IF NEEDED -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    CTA BANNER
+    The closing call-to-action. Edit headline, subtext, and links.
+  ============================================================ -->
+  <div class="cta-banner" id="contact">
+    <div>
+      <h2>Let's work together.</h2><!-- CTA HEADLINE -->
+      <p>Open to full-time brand strategy and marketing roles in Vancouver.</p><!-- CTA SUBTEXT -->
+    </div>
+    <div class="cta-links">
+      <a href="mailto:sarahmarion18@gmail.com" class="btn-light">Get in touch</a><!-- YOUR EMAIL -->
+      <a href="https://www.linkedin.com/in/sarahlivingston01/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a><!-- YOUR LINKEDIN -->
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+    FOOTER
+    Edit your name and social links.
+  ============================================================ -->
+  <footer>
+    <div class="footer-logo">Sarah Livingston</div><!-- YOUR NAME -->
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/sarahlivingston01/" target="_blank" rel="noopener">LinkedIn</a><!-- YOUR LINKEDIN -->
+      <a href="https://www.instagram.com/assembly_required_/" target="_blank" rel="noopener">Instagram</a><!-- YOUR INSTAGRAM -->
+      <a href="https://x.com/s_livingston01" target="_blank" rel="noopener">X</a><!-- YOUR X/TWITTER -->
+    </div>
+  </footer>
+
+</body>
+</html>

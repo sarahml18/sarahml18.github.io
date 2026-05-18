@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Sarah Livingston</title>
+  <meta name="description" content="Editorial features, journalism, and radio work by Sarah Livingston — brand strategist and writer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:       #F5F7F2;
+      --cream-dark:  #E8EDE2;
+      --border:      #C5CEBC;
+      --green-light: #EAF3DE;
+      --green-mid:   #7A9C7B;
+      --green-deep:  #3B6D11;
+      --forest:      #1E2A1F;
+      --text-primary:#1E2A1F;
+      --text-muted:  #4A5C4B;
+      --text-faint:  #7A9C7B;
+      --white:       #FFFFFF;
+      --tag-bg:      #EAF3DE;
+      --tag-text:    #27500A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* === NAV === */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text-primary); }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      padding: 72px 60px 64px;
+      border-bottom: 0.5px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 40px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .page-header-intro {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      padding-bottom: 4px;
+    }
+
+    .page-header-intro em {
+      font-style: italic;
+      color: var(--green-deep);
+      font-family: 'Lora', serif;
+    }
+
+    /* === WRITING SECTIONS === */
+    .writing-section {
+      padding: 64px 60px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .writing-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      font-weight: 500;
+    }
+
+    .section-source {
+      font-size: 12px;
+      color: var(--text-faint);
+      letter-spacing: 0.03em;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 40px;
+      margin-top: 8px;
+    }
+
+    /* === ARTICLE CARDS === */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .articles-grid.single-col {
+      grid-template-columns: 1fr;
+      max-width: 640px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s;
+    }
+
+    .article-card:hover {
+      border-color: var(--green-mid);
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+
+    .article-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .article-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .article-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green-deep);
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s;
+    }
+
+    .article-card:hover .article-link { gap: 9px; }
+    .article-link::after { content: '↗'; font-size: 11px; }
+
+    /* === RADIO CARDS (audio flavour) === */
+    .radio-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .radio-card:hover { border-color: var(--green-mid); }
+
+    .radio-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .radio-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--green-deep);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .radio-content { flex: 1; }
+
+    .radio-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .radio-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .radio-list { display: flex; flex-direction: column; gap: 8px; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: var(--forest);
+      padding: 72px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .cta-banner p { font-size: 15px; color: var(--green-mid); }
+
+    .cta-links { display: flex; gap: 14px; flex-shrink: 0; }
+
+    .btn-light {
+      background: var(--cream);
+      color: var(--forest);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 13px 26px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+
+    .btn-light:hover { opacity: 0.9; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 13px 26px;
+      border-radius: 4px;
+      border: 0.5px solid #4A5C4B;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    /* === FOOTER === */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      border-top: 0.5px solid var(--border);
+      background: var(--cream);
+    }
+
+    .footer-logo { font-family: 'Lora', serif; font-size: 14px; color: var(--text-faint); }
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-faint);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .page-header { grid-template-columns: 1fr; padding: 48px 28px 48px; gap: 24px; }
+      .writing-section { padding: 48px 28px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; padding: 48px 28px; }
+      .cta-links { flex-direction: column; width: 100%; }
+      footer { flex-direction: column; gap: 16px; padding: 24px 28px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === NAVIGATION === -->
+  <nav>
+    <a href="index.html" class="nav-logo">Sarah Livingston</a>
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="writing.html" class="active">Writing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/sarahlivingston01/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+
+  <!-- === PAGE HEADER === -->
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">Writing</p>
+      <h1>Journalism,<br>features &amp; radio.</h1>
+    </div>
+    <p class="page-header-intro">I've loved writing for as long as I can remember. A Master's in Journalism, a BBC Radio internship, and years of brand and editorial work later — the instinct hasn't changed. I write to make things <em>clearer, truer, and more human.</em></p>
+  </header>
+
+
+  <!-- ============================================================
+    SECTION 1: AI & TECHNOLOGY
+    TO ADD AN ARTICLE: copy an .article-card block, paste below the
+    last one, and update the href, title, and description.
+  ============================================================ -->
+  <section class="writing-section">
+    <div class="section-header">
+      <span class="section-label">AI & Technology</span>
+      <span class="section-source">Mindrift</span>
+    </div>
+    <p class="section-intro">A first-hand look at working inside AI — what it actually means to train language models and why the human editor's role matters more than you'd think.</p>
+
+    <div class="articles-grid single-col">
+
+      <a href="https://mindrift.ai/blog/inside-ai" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">Feature</span>
+        <div class="article-title">Exploring AI from the inside: my journey as an AI editor</div>
+        <div class="article-desc">A candid account of what it's really like to work as an AI editor — the tasks, the challenges, and what the job reveals about how language models actually learn.</div>
+        <span class="article-link">Read on Mindrift</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 2: TRAVEL RADAR — FEATURES
+    These are longer editorial pieces. News briefs are below.
+  ============================================================ -->
+  <section class="writing-section">
+    <div class="section-header">
+      <span class="section-label">Travel & Aviation Features</span>
+      <span class="section-source">Travel Radar</span>
+    </div>
+    <p class="section-intro">Editorial features covering the culture, design, and experience side of aviation and travel — the stories behind the industry, not just the headlines.</p>
+
+    <div class="articles-grid">
+
+      <a href="https://travelradar.aero/olympic-liveries-over-the-years/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">Feature</span>
+        <div class="article-title">A look at Olympic liveries over the years</div>
+        <div class="article-desc">From Tokyo to Beijing, airlines have long used the Olympics as a canvas. A visual tour through decades of special-edition aircraft paint jobs and what they say about national pride.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+      <a href="https://travelradar.aero/unique-airport-hotel-experiences/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">Feature</span>
+        <div class="article-title">9 unique airport hotel experiences worth the layover</div>
+        <div class="article-desc">Airport hotels don't have to be an afterthought. A roundup of the world's most surprisingly brilliant places to stay when you're between flights.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+      <a href="https://travelradar.aero/the-best-airports-for-layovers/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">Feature</span>
+        <div class="article-title">8 of the best airports for layovers</div>
+        <div class="article-desc">Making the case that a long layover can be a feature, not a bug — a guide to the airports worth getting stranded in.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 3: TRAVEL RADAR — NEWS
+  ============================================================ -->
+  <section class="writing-section">
+    <div class="section-header">
+      <span class="section-label">Industry News</span>
+      <span class="section-source">Travel Radar</span>
+    </div>
+    <p class="section-intro">Breaking news and analysis covering sustainable aviation — one of the industry's most urgent and fast-moving stories.</p>
+
+    <div class="articles-grid">
+
+      <a href="https://travelradar.aero/canadian-sustainable-aviation-fuels-council-launched/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">News</span>
+        <div class="article-title">Canadian Sustainable Aviation Fuels Council launched</div>
+        <div class="article-desc">Covering the launch of a new national coalition working to accelerate the adoption of sustainable aviation fuels across Canada.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+      <a href="https://travelradar.aero/virgin-atlantic-sustainable-aviation-fuel-supply/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">News</span>
+        <div class="article-title">Virgin Atlantic secures sustainable aviation fuel supply</div>
+        <div class="article-desc">Reporting on Virgin Atlantic's landmark SAF supply agreement and what it signals for the broader decarbonisation race in commercial aviation.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+      <a href="https://travelradar.aero/air-travel-sustainability-key-issue-new-research/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">News</span>
+        <div class="article-title">Air travel sustainability is a key issue, new research finds</div>
+        <div class="article-desc">New research reveals that passengers increasingly factor environmental impact into their travel decisions — and what that means for airlines still catching up.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+      <a href="https://travelradar.aero/united-airlines-operates-first-passenger-flight-using-100-sustainable-fuel/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">News</span>
+        <div class="article-title">United Airlines operates first flight on 100% sustainable fuel</div>
+        <div class="article-desc">A milestone moment for commercial aviation — breaking news on United's first passenger flight powered entirely by sustainable fuel, and why it matters for the industry.</div>
+        <span class="article-link">Read on Travel Radar</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 4: STUDENT JOURNALISM (UWS + Radio)
+  ============================================================ -->
+  <section class="writing-section">
+    <div class="section-header">
+      <span class="section-label">Student Journalism</span>
+      <span class="section-source">UWS Newsroom &amp; Radio</span>
+    </div>
+    <p class="section-intro">Work produced during my Master's in Broadcast Journalism at the University of the West of Scotland — print reporting and radio packages produced on tight deadlines for a live student newsroom.</p>
+
+    <div class="articles-grid">
+
+      <a href="https://uwsnewsroom.com/2020/03/25/2020-olympic-and-paralympic-games-postponed-over-covid-19-fears/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">News</span>
+        <div class="article-title">2020 Olympic and Paralympic Games postponed over Covid-19 fears</div>
+        <div class="article-desc">Breaking news reporting on the IOC's decision to postpone the Tokyo Games — filed as the pandemic reshaped the world in real time.</div>
+        <span class="article-link">Read on UWS Newsroom</span>
+      </a>
+
+      <a href="https://uwsnewsroom.com/2020/03/27/online-grocery-delivery-services-seeing-overload-during-covid-19-crisis/" target="_blank" rel="noopener" class="article-card">
+        <span class="article-tag">News</span>
+        <div class="article-title">Online grocery delivery services seeing overload during Covid-19 crisis</div>
+        <div class="article-desc">Reporting on the sudden surge in demand for grocery delivery during the first weeks of lockdown — and what it revealed about supply chain fragility.</div>
+        <span class="article-link">Read on UWS Newsroom</span>
+      </a>
+
+    </div>
+
+    <!-- RADIO PACKAGES -->
+    <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px; max-width: 640px;">
+
+      <a href="https://soundcloud.com/sarrraaahhhhh/international-students-in-scotland" target="_blank" rel="noopener" class="radio-card">
+        <div class="radio-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        </div>
+        <div class="radio-content">
+          <div class="radio-title">International students in Scotland — radio package</div>
+          <div class="radio-desc">A produced radio feature exploring the experience of international students studying in Scotland — their challenges, connections, and what drew them there.</div>
+          <span class="article-link">Listen on SoundCloud</span>
+        </div>
+      </a>
+
+      <a href="https://soundcloud.com/sarrraaahhhhh/the-royal-newfoundland-regiment-in-scotland" target="_blank" rel="noopener" class="radio-card">
+        <div class="radio-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        </div>
+        <div class="radio-content">
+          <div class="radio-title">The Royal Newfoundland Regiment in Scotland — radio package</div>
+          <div class="radio-desc">A history feature tracing the legacy of the Royal Newfoundland Regiment and their presence in Scotland — combining archival research with on-the-ground reporting.</div>
+          <span class="article-link">Listen on SoundCloud</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- === CTA BANNER === -->
+  <div class="cta-banner">
+    <div>
+      <h2>Let's work together.</h2>
+      <p>Open to full-time brand strategy and marketing roles in Vancouver.</p>
+    </div>
+    <div class="cta-links">
+      <a href="mailto:sarahmarion18@gmail.com" class="btn-light">Get in touch</a>
+      <a href="https://www.linkedin.com/in/sarahlivingston01/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- === FOOTER === -->
+  <footer>
+    <div class="footer-logo">Sarah Livingston</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/sarahlivingston01/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/assembly_required_/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/s_livingston01" target="_blank" rel="noopener">X</a>
+    </div>
+  </footer>
+
+</body>
+</html>
